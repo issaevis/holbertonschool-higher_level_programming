@@ -3,7 +3,8 @@
 
 
 class Square:
-    def __init__(self, size=0):
+    '''class that gets the attributes for a square'''
+    def __init__(self, size):
         '''initialize the size of the square'''
         if type(size) != int:
             raise TypeError("size must be an integer")
