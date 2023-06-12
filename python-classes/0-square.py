@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-# empty module
+'''Empty module'''
 
 class Square:
-    # empty class
+    '''Empty class'''
     pass
