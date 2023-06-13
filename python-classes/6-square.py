@@ -41,6 +41,9 @@ class Square:
         if self.size == 0:
             print()
         else:
+            if self.position[1] > 0:
+                pass
+
             if self.position[0] > 0:
                 for i in range(self.size):
                     for spc in range(self.position[0]):
