@@ -50,4 +50,10 @@ class Rectangle:
         for i in range(self.__height):
             for j in range(self.__width):
                 string += '#'
+            if i != self.__height - 1:
+                string += '\n'
         return string
+    
+    def __repr__(self):
+        '''returns a representation of the string'''
+        return ("Rectangle("+ str(self.__width) + ", " + str(self.__height) + ")")
