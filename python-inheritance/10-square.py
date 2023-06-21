@@ -30,3 +30,10 @@ class Rectangle(BaseGeometry):
     def __str__(self):
         '''configures __str__'''
         return "[Rectangle] {}/{}".format(self.__width, self.__height)
+
+
+class Square(Rectangle):
+    '''Class that defines a square'''
+    def __init__(self, size):
+        super().__init__(size, size)
+        self.__size = size
