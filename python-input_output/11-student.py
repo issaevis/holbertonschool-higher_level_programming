@@ -21,3 +21,8 @@ class Student:
                         d[string] = self.__dict__[string]
 
         return d
+
+    def reload_from_json(self, json):
+        for attr in json.keys():
+            if attr in self.__dict__.keys():
+                self.__dict__[attr] = json[attr]
