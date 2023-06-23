@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 def pascal_triangle(n):
 
-    if n == None:
+    if n == 0:
         return None
 
     triangle = []
