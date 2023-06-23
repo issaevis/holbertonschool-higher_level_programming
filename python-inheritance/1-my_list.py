@@ -3,9 +3,9 @@
 
 
 class MyList(list):
-    
+    '''Prints a sorted list'''
     def print_sorted(self):
-        '''method to print the list in ascending order'''
-        list = self.copy()
-        list.sort()
-        print(list)
+        ls = self.copy()
+        ls.sort()
+        print(ls)
+        return ls
