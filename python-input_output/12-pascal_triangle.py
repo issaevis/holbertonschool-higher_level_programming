@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 def pascal_triangle(n):
+
+    if n == None:
+        return None
+
     triangle = []
     for i in range(n):
         row = []
