@@ -85,3 +85,17 @@ class Rectangle(Base):
         s = "[Rectangle] ({}) {}/{}".format(self.id, self.__x, self.__y)
         s += " - {}/{}".format(self.__width, self.__height)
         return s
+
+    def update(self, *args):
+        '''assigns an argument to each attribute'''
+        if args is None or len(args) > 5:
+            raise ValueError("WTF")
+        else:
+            try:
+                self.id = args[0]
+                self.width = args[1]
+                self.height = args[2]
+                self.x = args[3]
+                self.y = args[4]
+            except IndexError:
+                pass
