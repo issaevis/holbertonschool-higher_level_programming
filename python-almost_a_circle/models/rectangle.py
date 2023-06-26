@@ -68,7 +68,15 @@ class Rectangle(Base):
 
     def display(self):
         '''prints a square with '#' '''
+
+        if self.__y is not None:
+            for num in range(self.__y):
+                print()
+
         for i in range(self.__height):
+            if self.__x is not None:
+                for num in range(self.__x):
+                    print(" ", end="")
             for j in range(self.__width):
                 print('#', end="")
             print()
