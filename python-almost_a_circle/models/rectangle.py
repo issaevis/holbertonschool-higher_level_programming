@@ -103,6 +103,7 @@ class Rectangle(Base):
                 pass
 
     def to_dictionary(self):
+        '''represents an object as a dict'''
         s = {'x': self.x, 'y': self.y, 'id': self.id, 'height': self.height}
         s['width'] = self.width
         return s
