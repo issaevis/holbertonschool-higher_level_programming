@@ -32,3 +32,11 @@ class Base:
             else:
                 json_list = [obj.to_dictionary() for obj in list_objs]
                 file.write(cls.to_json_string(json_list))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """Convert json string back into dict."""
+        if not json_string:
+            return []
+        else:
+            return json.loads(json_string)
