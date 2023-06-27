@@ -40,3 +40,12 @@ class Base:
             return []
         else:
             return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        '''returns an instance with all the attributes already set'''
+        # Create new object with dummy parameters
+        # and add it's properties using dictionary passed by argument
+        instance = cls(1, 2, 3, 4)  # Using a default id value for simplicity
+        instance.update(**dictionary)
+        return instance
