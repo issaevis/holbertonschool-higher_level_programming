@@ -1,50 +1,45 @@
 #!/usr/bin/python3
-'''Module to create a class that inherits'''
-
+'''class that inherits'''
 
 from models.base import Base
 
 
 class Rectangle(Base):
-    '''Class that defines a Rectangle'''
+    '''class rectangle'''
     def __init__(self, width, height, x=0, y=0, id=None):
-        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
         self.y = y
+        super().__init__(id)
 
     @property
     def width(self):
         return self.__width
 
-    @property
-    def height(self):
-        return self.__height
-
-    @property
-    def x(self):
-        return self.__x
-
-    @property
-    def y(self):
-        return self.__y
-
     @width.setter
     def width(self, width):
         if not isinstance(width, int):
             raise TypeError("width must be an integer")
-        if width < 0:
+        if width <= 0:
             raise ValueError("width must be > 0")
         self.__width = width
+
+    @property
+    def height(self):
+        return self.__height
 
     @height.setter
     def height(self, height):
         if not isinstance(height, int):
             raise TypeError("height must be an integer")
-        if height < 0:
+        if height <= 0:
             raise ValueError("height must be > 0")
         self.__height = height
+
+    @property
+    def x(self):
+        return self.__x
 
     @x.setter
     def x(self, x):
@@ -53,6 +48,10 @@ class Rectangle(Base):
         if x < 0:
             raise ValueError("x must be >= 0")
         self.__x = x
+
+    @property
+    def y(self):
+        return self.__y
 
     @y.setter
     def y(self, y):
@@ -63,47 +62,37 @@ class Rectangle(Base):
         self.__y = y
 
     def area(self):
-        '''get the area of the rectangle'''
-        return (self.width * self.height)
+        '''area of rectangle'''
+        return self.__height * self.__width
 
     def display(self):
-        '''prints a square with '#' '''
-
-        if self.__y is not None:
-            for num in range(self.__y):
-                print()
-
-        for i in range(self.__height):
-            if self.__x is not None:
-                for num in range(self.__x):
-                    print(" ", end="")
-            for j in range(self.__width):
-                print('#', end="")
+        '''print the square with #'''
+        for i in range(self.y):
             print()
+        for h in range(self.height):
+            print(" " * self.x, end="")
+            print("#" * self.width)
 
     def __str__(self):
-        s = "[Rectangle] ({}) {}/{}".format(self.id, self.__x, self.__y)
-        s += " - {}/{}".format(self.__width, self.__height)
-        return s
+        '''str func'''
+        txt = "[Rectangle] ({}) {}/{}".format(self.id, self.__x, self.__y)
+        txt += " - {}/{}".format(self.__width, self.__height)
+        return txt
 
     def update(self, *args, **kwargs):
-        '''assigns an argument to each attribute'''
-        if not args:
+        ''' fun that update'''
+        list_args = ["id", "width", "height", "x", "y"]
+
+        if args and len(args) != 0:
+            for i in range(len(args)):
+                setattr(self, list_args[i], args[i])
+        else:
             for key, value in kwargs.items():
                 if hasattr(self, key):
                     setattr(self, key, value)
-        else:
-            try:
-                self.id = args[0]
-                self.width = args[1]
-                self.height = args[2]
-                self.x = args[3]
-                self.y = args[4]
-            except IndexError:
-                pass
 
     def to_dictionary(self):
-        '''represents an object as a dict'''
-        s = {'x': self.x, 'y': self.y, 'id': self.id, 'height': self.height}
-        s['width'] = self.width
-        return s
+        '''represantation of a dictionary'''
+        dic = {"id": self.id, "width": self.width,
+               "height": self.height, "x": self.x, "y": self.y}
+        return dic
