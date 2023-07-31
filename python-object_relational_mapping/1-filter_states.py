@@ -6,29 +6,30 @@ import MySQLdb
 
 if __name__ == '__main__':
 
-    db = MySQLdb.connect(
-        host='localhost',
-        port=3306,
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        db=sys.argv[3],
-        charset="utf8")
+    if len(sys.argv) == 4:
+        db = MySQLdb.connect(
+            host='localhost',
+            port=3306,
+            user=sys.argv[1],
+            passwd=sys.argv[2],
+            db=sys.argv[3],
+            charset="utf8")
 
-    cur = db.cursor()
+        cur = db.cursor()
 
-    query = " ".join([
-        "SELECT * FROM states",
-        "WHERE name LIKE BINARY 'N%'",
-        "ORDER BY id ASC"])
+        query = " ".join([
+            "SELECT * FROM states",
+            "WHERE name LIKE BINARY 'N%'",
+            "ORDER BY id ASC"])
 
-    cur.execute(query)
-    rows = cur.fetchall()
+        cur.execute(query)
+        rows = cur.fetchall()
 
-    if not rows:
-        print("No matching rows found.")
+        if not rows:
+            print("No matching rows found.")
 
-    for row in rows:
-        print(row)
+        for row in rows:
+            print(row)
 
-    cur.close()
-    db.close()
+        cur.close()
+        db.close()
