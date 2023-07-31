@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-'''script that lists all states from hbtn_0e_0_usa'''
+'''script that lists all states from hbtn_0e_0_usa
+whoose name is "Arizona" '''
 import sys
 import MySQLdb
 
