@@ -1,0 +1,10 @@
+ def __init__(self, id, name):
+        self.name = name
+
+engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format("root", "root", "my_db"), pool_pre_ping=True)
+Base.metadata.create_all(engine)
+
+Session = sessionmaker(bind=engine)
+session = Session()
+
+session.commit()
