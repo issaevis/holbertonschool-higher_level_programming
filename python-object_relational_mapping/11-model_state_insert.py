@@ -14,10 +14,10 @@ if __name__ == "__main__":
                            .format(u, p, db), pool_pre_ping=True)
     Base.metadata.create_all(engine)
     session = Session(engine)
-    states = session.query(State.id).filter_by(name=sys.argv[4])
-    if states.count() == 0:
-        print('Not found')
-    else:
-        states = states.first()
-        print("{}".format(states.id))
+    
+    state = State(name="Louisiana")
+    session.add(state)
+    session.commit()
+    obj = session.query(State).order_by(State.id.desc()).first()
+    print("{}".format(obj.id))
     session.close()
