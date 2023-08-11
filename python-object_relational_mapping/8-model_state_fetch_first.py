@@ -14,13 +14,10 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     session = Session(engine)
 
-    f_state = session.query(State).order_by(State.id)
-
+    state = session.query(State).order_by(State.id)
     if state.count() == 0:
-        print("Nothing")
-
+        print('Nothing')
     else:
-        state = f_state.first()
+        state = state.first()
         print("{}: {}".format(state.id, state.name))
-
     session.close()
